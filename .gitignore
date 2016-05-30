@@ -1,0 +1,13 @@
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+/build/
+/app/ThemaV1.0.1-REALEASE.apk
+/app/ThemaV1.0.3-REALEASE.apk
+/app/ThemaV1.0.2-REALEASE.apk
+/app/ThemaV1.0-RELEASE.apk
