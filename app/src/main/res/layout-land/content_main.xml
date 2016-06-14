@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="net.lustenauer.thema.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="250dp"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:id="@+id/themaSpinner"
+                    android:layout_weight="1"
+                    android:drawSelectorOnTop="true"/>
+
+                <ImageButton
+                    android:id="@+id/themaButton"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:onClick="onThemaButton"
+                    android:src="@drawable/sound"
+                    android:text="@string/listen" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:id="@+id/entrySpinner"
+                    android:layout_weight="1"
+                    android:drawSelectorOnTop="true" />
+
+                <ImageButton
+                    android:id="@+id/stichwortButton"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:onClick="onStichwortButton"
+                    android:src="@drawable/sound" />
+            </TableRow>
+
+
+        </TableLayout>
+
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/frageButton1"
+                    android:layout_width="fill_parent"
+                    android:layout_span="2"
+                    android:layout_weight="1"
+                    android:onClick="onFrageButton"
+                    android:text="@string/question" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/frageText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="2"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+
+                <ImageButton
+                    android:id="@+id/frageButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@null"
+                    android:onClick="onFrageButton2"
+                    android:src="@drawable/sound" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/antwortButton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="2"
+                    android:layout_weight="1"
+                    android:onClick="onAntwortButton"
+                    android:text="@string/answer" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/antwortText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="2"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+
+                <ImageButton
+                    android:id="@+id/antwortButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="0"
+                    android:background="@null"
+                    android:onClick="onAntwortButton1"
+                    android:src="@drawable/sound" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/antwortText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="2"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+
+                <ImageButton
+                    android:id="@+id/antwortButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="0"
+                    android:background="@null"
+                    android:onClick="onAntwortButton2"
+                    android:src="@drawable/sound" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5">
+
+                <TextView
+                    android:id="@+id/antwortText3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_span="2"
+                    android:layout_weight="1"
+                    android:lines="2"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+
+                <ImageButton
+                    android:id="@+id/antwortButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="0"
+                    android:background="@null"
+                    android:onClick="onAntwortButton3"
+                    android:src="@drawable/sound" />
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
+</LinearLayout>

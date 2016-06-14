@@ -25,6 +25,7 @@
 package net.lustenauer.thema;
 
 import android.content.res.AssetFileDescriptor;
+import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -71,7 +72,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initLists();
+        initWidgets();
+    }
 
+    private void initWidgets() {
         antwortText1 = (TextView) findViewById(R.id.antwortText1);
         antwortText2 = (TextView) findViewById(R.id.antwortText2);
         antwortText3 = (TextView) findViewById(R.id.antwortText3);
@@ -83,13 +87,15 @@ public class MainActivity extends AppCompatActivity {
         frageButton1 = (Button) findViewById(R.id.frageButton1);
         frageButton2 = (ImageButton) findViewById(R.id.frageButton2);
 
+        themaSpinner = (Spinner) findViewById(R.id.themaSpinner);
+        entrySpinner = (Spinner) findViewById(R.id.entrySpinner);
+
 
         // THEMA SPINNER
         // =============
         themaAdapter = new ArrayAdapter<>(this, R.layout.spinner);
         themaAdapter.addAll(themaList);
 
-        themaSpinner = (Spinner) findViewById(R.id.themaSpinner);
         themaSpinner.setAdapter(themaAdapter);
 
         themaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -122,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
         entryAdapter = new ArrayAdapter<>(this, R.layout.spinner);
         entryAdapter.addAll(currentThema.getEntryList());
 
-        entrySpinner = (Spinner) findViewById(R.id.entrySpinner);
         entrySpinner.setAdapter(entryAdapter);
         entrySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -147,10 +152,6 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
-
-
-        // Set the hardware buttons to control the music
-        //this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
     }
 
 
@@ -177,6 +178,14 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        setContentView(R.layout.activity_main);
+        initWidgets();
+        themaSpinner.setSelection(themaList.indexOf(currentThema));
+        entrySpinner.setSelection(currentThema.getEntryList().indexOf(currentEntry));
+        super.onConfigurationChanged(newConfig);
+    }
 
     public void onAntwortButton(View view) {
 
@@ -260,6 +269,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void onResetButton(View view) {
+        hideAnswers();
+    }
 
     private void playMedia(String resource) {
         try {
@@ -304,7 +316,6 @@ public class MainActivity extends AppCompatActivity {
         themaList = new ArrayList<>();
 
         initBerufUndArbeiten();
-        initEinkaufen();
         initEinkaufen();
         initEssenUndTrinken();
         initFamilie();
@@ -909,7 +920,7 @@ public class MainActivity extends AppCompatActivity {
                 "Wo kann ich eine Fahrkarte kaufen?", "audio/fragen/WoKannIchEineFahrkarteKaufen.ogg",
                 "Am Bahnhof", "audio/antworten/AmBahnhof.ogg",
                 "Am Schalter", "audio/antworten/AmSchalter.ogg",
-                "Am Automaten", "audio/antworten/AmAutomaten.ogg.ogg"));
+                "Am Automaten", "audio/antworten/AmAutomaten.ogg"));
 
         el.add(new Entry(
                 "Familie", "audio/stichworte/familie.ogg",
@@ -918,7 +929,7 @@ public class MainActivity extends AppCompatActivity {
 
         el.add(new Entry(
                 "Flughafen", "audio/stichworte/flughafen.ogg",
-                "Wie komme ich zum Flughafen?", "audio/fragen/WieKommeIchZumFlughafen.ogg.ogg",
+                "Wie komme ich zum Flughafen?", "audio/fragen/WieKommeIchZumFlughafen.ogg",
                 "Fahren sie am besten mit dem Taxi", "audio/antworten/FahrenSieAmBestenMitDemTaxi.ogg"));
 
         el.add(new Entry(
